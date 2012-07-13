@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Authentication::Application.load_tasks
+Fbclone2::Application.load_tasks
