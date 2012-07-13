@@ -1,1 +1,9 @@
-<h2>Welcome <%= %></h2>
+<h2>Welcome</h2>
+
+<h4>New Post</h4>
+
+<%= form_tag('/users/:user_id/posts', :method => "post") do %>
+
+<%= text_area_tag :content %><br>
+<%= submit_tag "Save" %>
+<% end %>

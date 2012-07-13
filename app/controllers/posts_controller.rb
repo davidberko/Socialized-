@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  
+
   def index
     @posts = Post.all
   end
@@ -13,7 +15,12 @@ class PostsController < ApplicationController
 
   def create
     @posts = Post.create[params[:post]]
-    @post.save
+    @posts.save
+      redirect_to :index
+    else
+      :new
+      end
+    end
   end
 
   def edit
@@ -24,4 +31,3 @@ class PostsController < ApplicationController
 
   def destroy
   end
-end
