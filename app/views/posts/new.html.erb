@@ -2,8 +2,11 @@
 
 <h4>New Post</h4>
 
-<%= form_tag('/users/:user_id/posts', :method => "post") do %>
+<%= form_for(@post) do |f| %>
 
-<%= text_area_tag :content %><br>
-<%= submit_tag "Save" %>
+	<%= f.text_area :content %><br />
+	<%= f.hidden_field :user_id %>
+	<div>
+		<%= f.submit "Save" %>
+	</div>
 <% end %>

@@ -1,17 +1,18 @@
 Fbclone2::Application.routes.draw do
 
-  
-get "log_out" => "sessions#destroy", :as => "log_out"
-get "log_in" => "sessions#new", :as => "log_in"
-get "sign_up" => "users#new", :as => "sign_up"
-
-
-resources :sessions, :only => [:new, :create, :destroy]
+	resources :sessions, only: [:new, :create, :destroy]
+		
+	  
+	match "log_out", to: "sessions#destroy", :as => "log_out"
+	match "log_in", to: "sessions#new", :as => "log_in"
+	match "sign_up", to: "users#new", :as => "sign_up"
 	
 	resources :users do
-		resources :posts
+		resources :posts, only: [:show, :index]
 	end
+	
+	resources :posts 
 
-root :to => "posts#new"
+	root :to => "posts#index"
 
 end

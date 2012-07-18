@@ -6,28 +6,39 @@ class PostsController < ApplicationController
   end
 
   def new
-    @posts = Post.new(params[:post])
+    @post = Post.new(user_id: current_user.id)
   end
 
   def show
-    @posts = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def create
-    @posts = Post.create[params[:post]]
-    @posts.save
-      redirect_to :index
+    if @post = Post.create(params[:post])
+      redirect_to posts_path
     else
-      :new
-      end
+      render :new
     end
   end
-
+  
   def edit
+    @post = Post.find(params[:id],
+                      params[:content])
+    
   end
 
   def update
-  end
+    @post = Post.find(params[:id])
+    @post.update_attributes(params[:post])
+      redirect_to posts_path
+   end
 
   def destroy
+    @post = Post.find(params[:id])
+    if @post.delete
+      redirect_to posts_path
   end
+ end
+end
+
+  
