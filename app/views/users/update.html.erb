@@ -3,10 +3,11 @@
 <p></p>
 
 <div><%= @user.name %></div>
-<div><%= @user.email %></div>
 
 <div><%= image_tag @user.image_url %></div>
 
 <h3>Profile</h3>
+
+<%= link_to "View all posts", posts_path %>
 
 

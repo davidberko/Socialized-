@@ -1,5 +1,5 @@
 
-<%= link_to "Settings", edit_user_path(current_user) %>
+
 
 <h1>Showing all posts</h1>
 
@@ -8,9 +8,10 @@
 	<div>
 		<%=  p.content %>
 		<%= link_to "Edit", edit_post_path(p) %>
-		<%= link_to "Delete", p, :method => :delete %><br />
+		<%= link_to "Delete", p, :method => :delete %>
 	</div>
-
+	<div><%= p.created_at.strftime("%d %b. %Y") %></div>
+	<div><%= p.created_at.strftime("%H:%M") %></div>
 	<% end %>
 	
 	<p></p>
