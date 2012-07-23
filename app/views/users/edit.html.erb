@@ -1,0 +1,19 @@
+<h3>Edit User</h3>
+
+<%=	form_for @user, :html => { :multipart => true } do |f| %>
+	<div>	
+		<%= f.hidden_field :id %>
+	</div>
+	<div>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+	<div>
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</div>
+	<div>
+		<%= f.file_field :image %>
+	</div>
+	<p><%= f.submit %></p>
+<% end %>
