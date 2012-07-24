@@ -1,19 +1,27 @@
 
 
 
-<h1>Showing all posts</h1>
+<h2>What's happening</h2>
 
 	<% @posts.each do |p| %>
 
 	<div>
+		<%=  p.user.name %> says on:
+		<%= p.created_at.strftime("%d %b. %Y") %>
+		<%= p.created_at.strftime("%H:%M") %><br>
 		<%=  p.content %>
+	<% if p.user_id == current_user.id %>
 		<%= link_to "Edit", edit_post_path(p) %>
 		<%= link_to "Delete", p, :method => :delete %>
+		<p></p>
+		<p></p>
+	<% else %>
+		<p>Sorry, you must be logged in as <%= p.user.name %> 
+		in order to touch this!</p>
 	</div>
-	<div><%= p.created_at.strftime("%d %b. %Y") %></div>
-	<div><%= p.created_at.strftime("%H:%M") %></div>
+		<% end %>
 	<% end %>
-	
+
 	<p></p>
 	<p></p>
 
