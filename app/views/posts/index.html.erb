@@ -1,22 +1,27 @@
 
 
 
-<h2>What's happening</h2>
+<h2>What's happening</h2><br>
+
+	<div>
+		<%= link_to "What's up?", new_post_path %>
+	</div><br>
 
 	<% @posts.each do |p| %>
 
 	<div>
+		<%= image_tag p.user.image_url %>
 		<%=  p.user.name %> says on:
 		<%= p.created_at.strftime("%d %b. %Y") %>
 		<%= p.created_at.strftime("%H:%M") %><br>
-		<%=  p.content %>
+		<p>"<%=  "#{p.content}" %>"</p>
 	<% if p.user_id == current_user.id %>
 		<%= link_to "Edit", edit_post_path(p) %>
 		<%= link_to "Delete", p, :method => :delete %>
 		<p></p>
 		<p></p>
 	<% else %>
-		<p>Sorry, you must be logged in as <%= p.user.name %> 
+		<p>Sorry, you must be logged in as <b><%= p.user.name %></b> 
 		in order to touch this!</p>
 	</div>
 		<% end %>
@@ -25,7 +30,5 @@
 	<p></p>
 	<p></p>
 
-	<div>
-		<%= link_to "New", new_post_path %>
-	</div>
+	
 
