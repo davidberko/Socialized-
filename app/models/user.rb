@@ -19,6 +19,10 @@
       nil
     end
   end
+
+  def self.search(search)
+    User.where("name LIKE ?", "%#{search}%")
+  end
   
   def encrypt_password
     if password.present?
