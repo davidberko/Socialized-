@@ -13,7 +13,7 @@ Fbclone2::Application.routes.draw do
 	
 	resources :posts 
 
-	resources :users
+	resources :user
 
 	root :to => "sessions#new"
 
