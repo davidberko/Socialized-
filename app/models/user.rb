@@ -1,6 +1,7 @@
   class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :image, :name
   has_many :posts
+  has_many :comments
   mount_uploader :image, ImageUploader
 
   attr_accessor :password

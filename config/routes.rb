@@ -11,10 +11,8 @@ Fbclone2::Application.routes.draw do
 		resources :posts, only: [:show, :index]
 	end
 	
-	resources :posts do
-		resources :comments
-	end
-	
+	resources :posts 
+
 	resources :users
 
 	root :to => "sessions#new"
