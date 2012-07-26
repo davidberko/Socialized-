@@ -2,6 +2,16 @@
   attr_accessible :email, :password, :password_confirmation, :image, :name
   has_many :posts
   mount_uploader :image, ImageUploader
+  has_many :relationships, :dependent => :destroy,
+                           :foreign_key => "requester_id"
+  has_many :reverse_relationships, :dependent => :destroy,
+                                   :foreign_key => "requested_id",
+                                   :class_name => "relationship" 
+
+
+  has_many :requesting, :through => :relationships, :source => :requested                            
+  has_many :requesters, :through => :reverse_relationships,
+                        :source  => :follower
 
   attr_accessor :password
   before_save :encrypt_password
@@ -18,6 +28,22 @@
     else
       nil
     end
+  end
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def requesting?(requested)
+    self.relationships.find_by_requested_id(requested)
+  end
+
+  def request!(requested)
+    relationships.create!(:requester_id => requested.id)
+  end
+
+  def unrequest!(request)
+    relationships.find_by_requested_id(request).destroy
   end
   
   def encrypt_password
