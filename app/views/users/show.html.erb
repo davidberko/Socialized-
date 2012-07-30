@@ -1,3 +1,4 @@
+
 <h2>Profile</h2>
 <%= render 'request_form' %>
 <p></p>
@@ -11,4 +12,9 @@
 
 <%= link_to "View all posts", posts_path %>
 
+<h3>Friends</h3>
+  
+  <%= @user.relationships.each do |r| %>
+    <%= r.requested_id  %>
+    <% end %>
 

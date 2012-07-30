@@ -12,6 +12,7 @@
   has_many :requesting, :through => :relationships, :source => :requested                            
   has_many :requesters, :through => :reverse_relationships,
                         :source  => :follower
+  belongs_to :relationship
 
   attr_accessor :password
   before_save :encrypt_password
@@ -30,12 +31,12 @@
     end
   end
 
-  def current_user
+  def current_user?
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   def requesting?(requested)
-    self.relationships.find_by_requested_id(requested)
+    relationships.find_by_requested_id(requested)
   end
 
   def request!(requested)
@@ -44,6 +45,14 @@
 
   def unrequest!(request)
     relationships.find_by_requested_id(request).destroy
+  end
+
+  def with_relationships
+     
+  end
+  
+  def self.search(search)
+    User.where("name LIKE ?", "%#{search}%")
   end
   
   def encrypt_password

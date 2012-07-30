@@ -1,5 +1,9 @@
 
   <div id="request-form">
-        <%= render 'request' %>
+        <% if current_user.requesting?(@user) %>
+          <%= render 'unrequest' %>
+        <% else %>
+          <%= render 'request' %>
+          <% end %>
   </div>
 
