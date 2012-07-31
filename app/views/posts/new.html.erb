@@ -2,7 +2,6 @@
 
 <h4>New Post</h4>
 
-<%= @post ||= Post.new %>
 <%= form_for(@post) do |f| %>
 
   <%= f.text_area :content %><br />
