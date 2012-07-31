@@ -1,6 +1,5 @@
 
 
-
 <h2>What's happening</h2><br>
 
 	<body>
@@ -19,7 +18,7 @@
 		<%= p.created_at.strftime("%d %b. %Y") %>
 		<%= p.created_at.strftime("%H:%M") %><br>
 		<%= p.user.name %> says:
-		<%= p.content %>
+		"<%= p.content %>"
 	<% if p.user_id == current_user.id %>
 		<%= link_to "Edit", edit_post_path(p) %>
 		<%= link_to "Delete", p, :method => :delete %>
