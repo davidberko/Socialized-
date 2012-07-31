@@ -6,12 +6,12 @@
                            :foreign_key => "requester_id"
   has_many :reverse_relationships, :dependent => :destroy,
                                    :foreign_key => "requested_id",
-                                   :class_name => "relationship" 
+                                   :class_name => "Relationship" 
 
 
   has_many :requesting, :through => :relationships, :source => :requested                            
   has_many :requesters, :through => :reverse_relationships,
-                        :source  => :follower
+                        :source  => :requester
   belongs_to :relationship
 
   attr_accessor :password

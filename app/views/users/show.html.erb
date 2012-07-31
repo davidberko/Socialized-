@@ -14,7 +14,21 @@
 
 <h3>Friends</h3>
   
-  <%= @user.relationships.each do |r| %>
-    <%= r.requested_id  %>
-    <% end %>
+  <% @user ||= current_user %>
+  <div class="stats">
+  <a href="<%= requesting_user_path(@user) %>">
+    <strong id="requesting" class="stat">
+      <%= @user.requesting.count %>
+    </strong>
+    requesting
+  </a>
+</div>
+  <div>
+  <a href="<%= requesters_user_path(@user) %>">
+    <strong id="requesters" class="stat">
+      <%= @user.requesters.count %>
+    </strong>
+    requesters 
+  </a>
+</div>
 

@@ -3,6 +3,11 @@
 
 <h2>What's happening</h2><br>
 
+
+	<body>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">	</script>
+
 	<div>
 		<%= link_to "What's up?", new_post_path %>
 	</div><br>
@@ -25,10 +30,21 @@
 		in order to touch this!</p>
 	</div>
 		<% end %>
-	<% end %>
+		<% end %>
 
 	<p></p>
 	<p></p>
 
+	<script>
+
+		(function() {
+
+			$('h2').after()
+
+		})();
+
+	</script>
+
+</body>
 	
 
