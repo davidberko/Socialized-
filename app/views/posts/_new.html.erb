@@ -1,0 +1,13 @@
+
+
+<h4>New Post</h4>
+
+<% @post ||= Post.new(user_id: current_user.id) %>
+<%= form_for(@post) do |f| %>
+
+  <%= f.text_area :content %><br />
+  <%= f.hidden_field :user_id %>
+  <div>
+    <%= f.submit "Save" %>
+  </div>
+<% end %>
