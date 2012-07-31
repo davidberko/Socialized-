@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:id], params[:relationship])
   end
 
   def new
@@ -29,5 +29,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
    @user.update_attributes(params[:user])
     end
+  
+  def requesting
+    @title = "Requesting"
+    @user = User.find(params[:id])
+    @users = @user.requesting
   end
+
+  def requesters
+    @title = "Requesters"
+    @user = User.find(params[:id])
+    @users = @user.requesters
+  end
+end
+
 

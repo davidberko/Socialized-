@@ -2,6 +2,17 @@
   attr_accessible :email, :password, :password_confirmation, :image, :name
   has_many :posts
   mount_uploader :image, ImageUploader
+  has_many :relationships, :dependent => :destroy,
+                           :foreign_key => "requester_id"
+  has_many :reverse_relationships, :dependent => :destroy,
+                                   :foreign_key => "requested_id",
+                                   :class_name => "Relationship" 
+
+
+  has_many :requesting, :through => :relationships, :source => :requested                            
+  has_many :requesters, :through => :reverse_relationships,
+                        :source  => :requester
+  belongs_to :relationship
 
   attr_accessor :password
   before_save :encrypt_password
@@ -20,6 +31,26 @@
     end
   end
 
+  def current_user?
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def requesting?(requested)
+    relationships.find_by_requested_id(requested)
+  end
+
+  def request!(requested)
+    relationships.create!(:requester_id => requested.id)
+  end
+
+  def unrequest!(request)
+    relationships.find_by_requested_id(request).destroy
+  end
+
+  def with_relationships
+     
+  end
+  
   def self.search(search)
     User.where("name LIKE ?", "%#{search}%")
   end

@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120725192737) do
+ActiveRecord::Schema.define(:version => 20120731135508) do
+
+  create_table "comments", :force => true do |t|
+    t.string   "body"
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "friends", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "posts", :force => true do |t|
     t.string   "content"
@@ -19,6 +36,17 @@ ActiveRecord::Schema.define(:version => 20120725192737) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "requester_id"
+    t.integer  "requested_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "relationships", ["requested_id"], :name => "index_relationships_on_requested_id"
+  add_index "relationships", ["requester_id", "requested_id"], :name => "index_relationships_on_requester_id_and_requested_id", :unique => true
+  add_index "relationships", ["requester_id"], :name => "index_relationships_on_requester_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
