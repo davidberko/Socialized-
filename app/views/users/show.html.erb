@@ -1,6 +1,6 @@
 
 <h2>Profile</h2>
-
+<%= render 'request_form' %>
 <p></p>
 <p></p>
 
@@ -12,4 +12,23 @@
 
 <%= link_to "View all posts", posts_path %>
 
+<h3>Friends</h3>
+  
+  <% @user ||= current_user %>
+  <div class="stats">
+  <a href="<%= requesting_user_path(@user) %>">
+    <strong id="requesting" class="stat">
+      <%= @user.requesting.count %>
+    </strong>
+    requesting
+  </a>
+</div>
+  <div>
+  <a href="<%= requesters_user_path(@user) %>">
+    <strong id="requesters" class="stat">
+      <%= @user.requesters.count %>
+    </strong>
+    requesters 
+  </a>
+</div>
 
