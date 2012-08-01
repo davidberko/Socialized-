@@ -8,22 +8,22 @@ Fbclone2::Application.routes.draw do
 	match "sign_up", to: "users#new", :as => "sign_up"
 	
 	resources :users do
+    resources :messages
 		resources :posts, only: [:show, :index]
 		member do
 			get :requesting, :requesters
 		end
 	end
-		
+
+	
+	resources :posts 
+	resources :user
+  # resources :messages
+
 	resources :posts do
 		get :like, on: :member
 		get :unlike, on: :member
 	end
-
-
-	resources :user do
-    resources :messages
-  end
-
 
 	root :to => "sessions#new"
 

@@ -1,4 +1,6 @@
 class Message < ActiveRecord::Base
-  attr_accessible :body
-  has_and_belongs_to_many :users
+
+  attr_accessible :body, :user_id
+  belongs_to :user
+
 end
