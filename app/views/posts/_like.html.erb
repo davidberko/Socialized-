@@ -1,0 +1,7 @@
+<% @post ||= Post.update_attributes(params[:post]) %>
+<%= form_for(@post) do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= f.label(:post, :like) %>
+  <div id="like"><%= f.radio_button("like", "yes") %></div>
+  <%= f.submit "Like" %>
+  <% end %>

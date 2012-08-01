@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   def index
+<<<<<<< HEAD
     @messages = Message.all
   end
 
@@ -25,5 +26,16 @@ end
     @message = Message.find(params[:id])
     @message.delete
     redirect_to messages_path
+=======
+  end
+
+  def new
+  end
+
+  def create
+  end
+
+  def destroy
+>>>>>>> e8bfc8bd6f8e5e988f57cea70e4df5dc53d5406c
   end
 end

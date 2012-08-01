@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20120801193857) do
+=======
+ActiveRecord::Schema.define(:version => 20120801150518) do
+>>>>>>> e8bfc8bd6f8e5e988f57cea70e4df5dc53d5406c
 
   create_table "comments", :force => true do |t|
     t.string   "body"
@@ -31,12 +35,22 @@ ActiveRecord::Schema.define(:version => 20120801193857) do
   end
 
   create_table "messages", :force => true do |t|
+<<<<<<< HEAD
     t.string   "body"
+=======
+    t.text     "body"
+    t.string   "user_email"
+>>>>>>> e8bfc8bd6f8e5e988f57cea70e4df5dc53d5406c
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
+<<<<<<< HEAD
+=======
+  add_index "messages", ["user_email"], :name => "index_messages_on_user_email"
+
+>>>>>>> e8bfc8bd6f8e5e988f57cea70e4df5dc53d5406c
   create_table "posts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
