@@ -1,9 +1,5 @@
 Fbclone2::Application.routes.draw do
 
-  get "relationships/create"
-
-  get "relationships/destroy"
-
 	resources :sessions, only: [:new, :create, :destroy]
 	resources :relationships, only: [:create, :destroy]
 	  
@@ -15,12 +11,19 @@ Fbclone2::Application.routes.draw do
 		resources :posts, only: [:show, :index]
 		member do
 			get :requesting, :requesters
+		end
 	end
-end
-	
-	resources :posts 
+		
+	resources :posts do
+		get :like, on: :member
+		get :unlike, on: :member
+	end
 
-	resources :user
+
+	resources :user do
+    resources :messages
+  end
+
 
 	root :to => "sessions#new"
 

@@ -10,7 +10,7 @@
 	<button>Make Post</button>
 	<div id="new"><%= render 'new' %></div>
 
-	<% @posts.each do |p| %>
+	<% (@posts).each do |p| %>
 
 	<p></p>
 
@@ -18,28 +18,48 @@
 		<%= image_tag p.user.image_url %>
 		<%= p.created_at.strftime("%d %b. %Y") %>
 		<%= p.created_at.strftime("%H:%M") %><br>
-		<%= p.user.name %> says:
-		<%= p.content %>
-	<% if p.user_id == current_user.id %>
-		<%= link_to "Edit", edit_post_path(p) %>
-		<%= link_to "Delete", p, :method => :delete %>
-		<p></p>
-		<p></p>
-	<% else %>
-	
-	</div>
+		<%= p.user.name %> says: "<%= p.content %>"
+		<% if p.user_id == current_user.id %>
+			<%= link_to "Edit", edit_post_path(p) %>
+			<%= link_to "Delete", p, :method => :delete %>
+		<% else %>
+			<div>
+			<% if p.likes.include?(current_user) %>
+				<%= link_to "Unlike", unlike_post_path(p), class: 'like' %>
+				You like this
+			<% else %>
+				<%= link_to "Like", like_post_path(p), class: 'like'%>
+			<% end %>
+			<%= p.likes.count %>
+			<span class="like_names">Likes this: <%= p.likes.pluck(:name).join(", ") %></span>
+			</div>
+			<p></p>
+			<p></p>
 		<% end %>
 	<% end %>
-
-	<p></p>
-	<p></p>
-
 	<script>
 		(function() {
 			$('div#new').hide()
 			$('button').click(function () {
 				$('div#new').show()
 			})
+		})();
+
+		(function() {
+			$('.like_names').hide()
+			$('.like').mouseover(function (e) {
+				$(e.target).siblings(".like_names").show()
+			})
+			$('.like').mouseleave(function (e) {
+				link = $(e.target)
+				link.siblings(".like_names").hide()
+			})
 		})();	
+
 	</script>
+
+	<p></p>
+	<p></p>
+
+
 </body>
