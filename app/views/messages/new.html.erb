@@ -1,16 +1,12 @@
-<<<<<<< HEAD
+
 <h4>New Message</h4>
 
-<% @message ||= Message.new(user_id: current_user.id) %>
-<%= form_for(@message) do |f| %>
+<%= form_for([@user, @message]) do |f| %>
 
   <%= f.text_area :body %><br />
-  <%= f.hidden_field :user_id %>
   <div>
     <%= f.submit "Send" %>
   </div>
 <% end %>
-=======
-<h1>Messages#new</h1>
-<p>Find me in app/views/messages/new.html.erb</p>
->>>>>>> e8bfc8bd6f8e5e988f57cea70e4df5dc53d5406c
+
+
