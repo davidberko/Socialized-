@@ -7,7 +7,7 @@
   has_many :reverse_relationships, :dependent => :destroy,
                                    :foreign_key => "requested_id",
                                    :class_name => "Relationship" 
-
+   has_and_belongs_to_many :likes, join_table: :posts_users, association_foreign_key: :post_id, class_name: Post
 
   has_many :requesting, :through => :relationships, :source => :requested                            
   has_many :requesters, :through => :reverse_relationships,
