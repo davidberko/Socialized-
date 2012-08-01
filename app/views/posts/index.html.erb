@@ -20,6 +20,7 @@
 		<%= p.created_at.strftime("%H:%M") %><br>
 		<%= p.user.name %> says:
 		<%= p.content %>
+		<button>Like</button>
 	<% if p.user_id == current_user.id %>
 		<%= link_to "Edit", edit_post_path(p) %>
 		<%= link_to "Delete", p, :method => :delete %>
@@ -28,11 +29,6 @@
 	<% else %>
 	
 	</div>
-		<% end %>
-	<% end %>
-
-	<p></p>
-	<p></p>
 
 	<script>
 		(function() {
@@ -41,5 +37,18 @@
 				$('div#new').show()
 			})
 		})();	
+		(function(){
+
+			
+
+		})();
 	</script>
+	
+		<% end %>
+	<% end %>
+
+	<p></p>
+	<p></p>
+
+
 </body>
