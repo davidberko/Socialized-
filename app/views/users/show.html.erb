@@ -1,6 +1,7 @@
 
 <h2>Profile</h2>
 <%= render 'request_form' %>
+<%= link_to "Message #{@user.name}", new_user_message_path(@user) %>
 <p></p>
 <p></p>
 

@@ -1,2 +1,9 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<h3>Inbox</h3>
+
+<% @messages.each do |m| %>
+<div>
+  From: <%= m.user.name %><br>
+  <%= m.body %>
+  <p></p>
+</div>
+<% end %>
