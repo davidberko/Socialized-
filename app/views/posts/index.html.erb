@@ -19,8 +19,9 @@
 		<%= p.created_at.strftime("%d %b. %Y") %>
 		<%= p.created_at.strftime("%H:%M") %><br>
 		<%= p.user.name %> says:
-		<%= p.content %>
-		<button>Like</button>
+		"<%= p.content %>"<br>
+		<%= link_to "Like", like_post_path(p) %>
+		<%= p.likes.count %>(<%= p.likes.pluck(:name).join(", ") %>)
 	<% if p.user_id == current_user.id %>
 		<%= link_to "Edit", edit_post_path(p) %>
 		<%= link_to "Delete", p, :method => :delete %>
@@ -39,11 +40,11 @@
 		})();	
 		(function(){
 
-			
+			$('button#like').click().append("")
 
 		})();
 	</script>
-	
+
 		<% end %>
 	<% end %>
 

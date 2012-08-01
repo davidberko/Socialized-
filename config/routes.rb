@@ -11,10 +11,13 @@ Fbclone2::Application.routes.draw do
 		resources :posts, only: [:show, :index]
 		member do
 			get :requesting, :requesters
+		end
 	end
-end
-	
-	resources :posts 
+		
+	resources :posts do
+		get :like, on: :member
+	end
+
 
 	resources :user do
     resources :messages
