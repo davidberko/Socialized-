@@ -1,0 +1,11 @@
+<h4>New Message</h4>
+
+<% @message ||= Message.new(user_id: current_user.id) %>
+<%= form_for(@message) do |f| %>
+
+  <%= f.text_area :body %><br />
+  <%= f.hidden_field :user_id %>
+  <div>
+    <%= f.submit "Send" %>
+  </div>
+<% end %>
