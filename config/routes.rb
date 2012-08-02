@@ -18,7 +18,7 @@ Fbclone2::Application.routes.draw do
 	
 	resources :posts 
 	resources :user
-  # resources :messages
+
 
 	resources :posts do
 		get :like, on: :member
