@@ -36,6 +36,10 @@
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+   def signed_in?
+    !@current_user.nil?
+  end
+
   def requesting?(requested)
     relationships.find_by_requested_id(requested)
   end
