@@ -3,11 +3,15 @@
 <h4>New Post</h4>
 
 <% @post ||= Post.new(user_id: current_user.id) %>
-<%= form_for(@post) do |f| %>
+<%= form_for(@post, :html => { :multipart => true }) do |f| %>
 
   <%= f.text_area :content %><br />
   <%= f.hidden_field :user_id %>
   <div>
-    <%= f.submit "Save" %>
+    <%= f.label :image, "Upload a pic" %>
+    <%= f.file_field :image%>
+  </div>
+  <div>
+    <%= f.submit "Post" %>
   </div>
 <% end %>
