@@ -1,5 +1,5 @@
   class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation, :image, :name, :favorite_movie, :pets, :quotes
+  attr_accessible :email, :password, :password_confirmation, :image, :name, :favorite_movie, :pets, :quotes, :dislike
   has_many :posts
   has_many :messages
   mount_uploader :image, ImageUploader
@@ -9,7 +9,7 @@
                                    :foreign_key => "requested_id",
                                    :class_name => "Relationship" 
    has_and_belongs_to_many :likes, join_table: :posts_users, association_foreign_key: :post_id, class_name: Post
-
+   has_and_belongs_to_many :dislike, join_table: :posts_users_dislike, association_foreign_key: :post_id, class_name: Post
   has_many :requesting, :through => :relationships, :source => :requested                            
   has_many :requesters, :through => :reverse_relationships,
                         :source  => :requester

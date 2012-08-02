@@ -23,6 +23,7 @@ Fbclone2::Application.routes.draw do
 	resources :posts do
 		get :like, on: :member
 		get :unlike, on: :member
+		get :dislike, on: :member
 	end
 
 	root :to => "sessions#new"

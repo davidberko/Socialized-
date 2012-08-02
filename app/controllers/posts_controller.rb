@@ -53,6 +53,12 @@ class PostsController < ApplicationController
     end
     redirect_to posts_path
  end
+
+ def dislike
+  @post = Post.find(params[:id])
+  @post.dislike << current_user unless @post.dislike.include?(current_user)
+  redirect_to posts_path
+  end
 end
 
   
