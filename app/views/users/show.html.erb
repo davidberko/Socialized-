@@ -1,7 +1,12 @@
 
 <h2>Profile</h2>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
 <%= render 'request_form' %>
-<%= link_to "Message #{@user.name}", new_user_message_path(@user) %>
+<% unless current_user.id == @user.id %>
+  <span><%= link_to "Message #{@user.name}", new_user_message_path(@user) %></span>
+<% end %>
 <p></p>
 <p></p>
 
@@ -15,8 +20,8 @@
 
 <h3>Friends</h3>
   
-  <% @user ||= current_user %>
-  <div class="stats">
+<% @user ||= current_user %>
+<div class="stats">
   <a href="<%= requesting_user_path(@user) %>">
     <strong id="requesting" class="stat">
       <%= @user.requesting.count %>
@@ -24,7 +29,7 @@
     requesting
   </a>
 </div>
-  <div>
+<div>
   <a href="<%= requesters_user_path(@user) %>">
     <strong id="requesters" class="stat">
       <%= @user.requesters.count %>
