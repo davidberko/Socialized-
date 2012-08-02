@@ -15,5 +15,17 @@
 	<div>
 		<%= f.file_field :image %>
 	</div>
+	<div>
+		<%= f.label :favorite_movie, "What are your favorite movies?"%>
+		<%= f.text_area :favorite_movie  %>
+	</div>
+	<div>
+		<%= f.label :pets, "What are your pets and what are their names?" %>
+		<%= f.text_field :pets %>
+	</div>
+	<div>
+		<%= f.label :quotes, "What are some of your favorite quotes?" %>
+		<%= f.text_area :quotes %>
+	</div>
 	<p><%= f.submit %></p>
 <% end %>

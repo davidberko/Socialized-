@@ -3,20 +3,22 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
-<%= render 'request_form' %>
-<% unless current_user.id == @user.id %>
-  <span><%= link_to "Message #{@user.name}", new_user_message_path(@user) %></span>
-<% end %>
-<p></p>
-<p></p>
+<table>
 
-<div><b><%= @user.name %></b></div><br>
-
-<div><%= image_tag @user.image_url %></div><br>
+  <%= render 'request_form' %>
+  <% unless current_user.id == @user.id %>
+      <span><%= link_to "Message #{@user.name}", new_user_message_path(@user) %></span>
+  <% end %>
+    <p></p>
+    <p></p>
 
 
+    <td><%= image_tag @user.image_url %></td><br>
+    <td><b><%= @user.name %></b></td><br>
 
-<%= link_to "View all posts", posts_path %>
+    <td><%= link_to "View all posts", posts_path %></td>
+
+</table>
 
 <h3>Friends</h3>
   
@@ -37,4 +39,35 @@
     requesters 
   </a>
 </div>
+<div id="sidebar">
+  <div id="favorite_movies">
+    <span><b>What are <%= "#{@user.name}'s" %> . . . <br>
+      <p></p>
+      Favorite Movies?</b></span><br>
+    <p></p>
+    <p class="movies"><%= @user.favorite_movie %></p>
+  </div><br>
+  <div id="pets">
+    <span><b>Pets</b></span>
+    <p></p>
+    <p class="pets"><%= @user.pets %></p>
+  </div><br>
+  <div id="quotes">
+    <span><b>Best Quotes</b></span>
+    <p></p>
+    <p class="quotes"><%= @user.quotes %></p>
+  </div>
+</div>
+
+<script>
+  (function (){
+
+    $('p.movies').hide()
+    $('div#favorite_movies span').hover(function(e) {
+
+    $('p.movies').toggle()
+        });
+  })();
+</script>
+
 
