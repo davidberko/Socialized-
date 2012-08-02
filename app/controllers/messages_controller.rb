@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
 
   def new
      @user = User.find(params[:user_id])
-    @message = Message.new(user_id: current_user.id)
+     @message = Message.new(user_id: current_user.id)
   end
 
   def create
@@ -21,9 +21,7 @@ class MessagesController < ApplicationController
 end
   
   def show
-    @message = Message.find(params[:id],
-                            params[:user_id])
-
+    @message = Message.find(params[:id])
 end
 
   def edit
@@ -38,8 +36,11 @@ end
   end
 
   def delete
-    @message = Message.find(params[:id])
-    @message.delete
-    redirect_to messages_path
+    @user = User.find(params[:user_id])
+    @message = @user.messages.destroy
+    @message.destroy
+
+      redirect_to messages_path(@user)
   end
 end
+

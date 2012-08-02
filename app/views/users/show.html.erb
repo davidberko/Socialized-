@@ -16,12 +16,12 @@
     <td><%= image_tag @user.image_url %></td><br>
     <td><b><%= @user.name %></b></td><br>
 
-    <td><%= link_to "View all posts", posts_path %></td>
+    <td><%= link_to "View all posts", posts_path %></td><br>
 
 </table>
 
 <h3>Friends</h3>
-  
+
 <% @user ||= current_user %>
 <div class="stats">
   <a href="<%= requesting_user_path(@user) %>">
