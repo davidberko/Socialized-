@@ -23,6 +23,16 @@
 <h3>Friends</h3>
 
 <% @user ||= current_user %>
+
+<table id="users">
+  <% @user.posts.each do |post| %>
+    <tr>
+      <td class="user_posts"><%= post.content %></td>
+    </tr>
+  <% end %>
+</table>
+
+
 <div class="stats">
   <a href="<%= requesting_user_path(@user) %>">
     <strong id="requesting" class="stat">
@@ -63,10 +73,18 @@
   (function (){
 
     $('p.movies').hide()
-    $('div#favorite_movies span').hover(function(e) {
+    $('div#favorite_movies span').hover(function() {
 
     $('p.movies').toggle()
         });
+    $('p.pets').hide()
+    $('div#pets').hover(function() {
+      $('p.pets').toggle()
+    });
+    $('p.quotes').hide()
+    $('div#quotes').hover(function() {
+      $('p.quotes').toggle()
+    });
   })();
 </script>
 
