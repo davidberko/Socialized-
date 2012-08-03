@@ -26,7 +26,11 @@
 <table id="users">
   <% @user.posts.each do |post| %>
     <tr>
-      <td class="user_posts"><%= post.content %></td>
+      <td class="user_posts">
+        <b>On:</b> <%= post.created_at.strftime("%d %b. %Y") %>
+        <%= post.created_at.strftime("%H:%M") %><br>
+        <b>You said:</b> "<%= post.content %>"
+      </td>
     </tr>
   <% end %>
 </table>
