@@ -1,26 +1,25 @@
 
-<h2>Profile</h2>
+  <h2 class="profile">FacebookClone</h2>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
-<table>
+
 
   <%= render 'request_form' %>
   <% unless current_user.id == @user.id %>
       <span><%= link_to "Message #{@user.name}", new_user_message_path(@user) %></span>
   <% end %>
-    <p></p>
-    <p></p>
 
+  
+<div> 
+  <span><%= image_tag @user.image_url %></span>
+  <spam><b><%= @user.name %></b></span>
 
-    <td><%= image_tag @user.image_url %></td><br>
-    <td><b><%= @user.name %></b></td><br>
+  <span><%= link_to "View all posts", posts_path %></span>
 
-    <td><%= link_to "View all posts", posts_path %></td><br>
+</div>
 
-</table>
-
-<h3>Friends</h3>
+<h2 class="friends">Friends</h2>
 
 <% @user ||= current_user %>
 
@@ -50,30 +49,31 @@
   </a>
 </div>
 <div id="sidebar">
-  <div id="favorite_movies">
-    <span><b>What are <%= "#{@user.name}'s" %> . . . <br>
-      <p></p>
-      Favorite Movies?</b></span><br>
-    <p></p>
-    <p class="movies"><%= @user.favorite_movie %></p>
-  </div><br>
-  <div id="pets">
-    <span><b>Pets</b></span>
-    <p></p>
-    <p class="pets"><%= @user.pets %></p>
-  </div><br>
-  <div id="quotes">
-    <span><b>Best Quotes</b></span>
-    <p></p>
-    <p class="quotes"><%= @user.quotes %></p>
+  <b>What are <%= "#{@user.name}'s" %> . . . <br>
+  <div id="favorite_movies">      
+    <span>Favorite Movies?</b></span><br>
+    <div>  
+      <p class="movies"><%= @user.favorite_movie %></p>
+    </div>
   </div>
+  <div id="pets">
+    <b>Pets</b>
+    <div>
+      <p class="pets"><%= @user.pets %></p>
+    </div>
+  </div>
+  <div id="quotes">
+    <b>Best Quotes</b>
+    <div>
+      <p class="quotes"><%= @user.quotes %></p>
+    </div>
 </div>
 
 <script>
   (function (){
 
     $('p.movies').hide()
-    $('div#favorite_movies span').hover(function() {
+    $('div#favorite_movies').hover(function() {
 
     $('p.movies').toggle()
         });

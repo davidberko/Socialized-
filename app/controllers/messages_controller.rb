@@ -17,12 +17,13 @@ class MessagesController < ApplicationController
       redirect_to user_path(current_user)
     else
       redirect_to user_messages_path(@user)
+    end
   end
-end
   
   def show
+    @user = User.find(params[:user_id])
     @message = Message.find(params[:id])
-end
+  end
 
   def edit
     @message = Message.find(params[:id],
@@ -35,12 +36,10 @@ end
     redirect_to messages_path
   end
 
-  def delete
-    @user = User.find(params[:user_id])
-    @message = @user.messages.destroy
+  def destroy
+    @message = Message.find(params[:id])
     @message.destroy
-
-      redirect_to messages_path(@user)
+    redirect_to messages_path(current_user)
+    end
   end
-end
 

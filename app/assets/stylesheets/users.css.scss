@@ -2,18 +2,47 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+div {
+  margin: 25px;
+  border-color: Blue;
+  border-width: 3px;
+  border-style: solid;
+  padding: 5px;
+  background-color: LightGrey;
+  width: 250px;
+}
+
+div#request-form {
+
+}
+
+
 body {
   
-  background-color: CornflowerBlue;
+  background-color: White;
   
 }
 
-
-
-table {
-  background-color: LightGrey;  
-  text-decoration: blink;
+h2.profile {
+  margin-top: 2cm;
+  text-decoration:underline;
+  margin-left: 1cm;
+  background-color: Blue;
+  color: White;
 }
+
+h2.friends {
+  margin-left: 1cm;
+}
+
+button {
+  margin-left: 2cm;  
+}
+
+div.user-info {
+  margin-left: 2cm;
+}
+
 
 table#users  {
   text-align: right;
@@ -30,11 +59,10 @@ table#users  {
   float: left;
   margin-right: 5px;
   padding: 5px 0 0 5px;
-  border-color: LightGrey LightGrey;
+  border-color: Blue Blue;
 }
 
 p {
-  background-color: LightGrey;
   text-indent: 50px;
 }
 

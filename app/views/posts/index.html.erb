@@ -1,10 +1,4 @@
-
-
-
 <h2>What's happening</h2><br>
-
-	<body>
-	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 	<button>Make Post</button>
@@ -12,35 +6,37 @@
 
 	<% (@posts).each do |p| %>
 
-	<p></p>
+		<div class="user-info">
+			<%= image_tag p.user.image_url %>
+			<%= p.created_at.strftime("%d %b. %Y") %>
+			<%= p.created_at.strftime("%H:%M") %>
+			
+		
+			<div class="post-content">
+				<% if p.image_url == "http://placehold.it/50x50&text=no-image" %>
+					<%= p.user.name %> says: "<%= p.content %>"
+					<%= image_tag p.image_url %>
+				<% end %>
+			
+				
+				<% if p.user_id == current_user.id %>
+					<%= link_to "Edit", edit_post_path(p) %>
+					<%= link_to "Delete", p, :method => :delete %>
+				<% end %>
 
-	<div>
-		<%= image_tag p.user.image_url %>
-		<%= p.created_at.strftime("%d %b. %Y") %>
-		<%= p.created_at.strftime("%H:%M") %><br>
-		<% if p.image_url == "http://placehold.it/50x50&text=no-image" %>
-			<%= p.user.name %> says: "<%= p.content %>"
-		<% else %>
-			<%= image_tag p.image_url %>
-		<% end %>
-		<% if p.user_id == current_user.id %>
-			<%= link_to "Edit", edit_post_path(p) %>
-			<%= link_to "Delete", p, :method => :delete %>
-		<% else %>
-			<div>
-			<% if p.likes.include?(current_user) %>
-				<%= link_to "Unlike", unlike_post_path(p), class: 'like' %>
-				You like this
-			<% else %>
-				<%= link_to "Like", like_post_path(p), class: 'like'%>
-			<% end %>
-			<%= p.likes.count %>
-			<span class="like_names">Likes this: <%= p.likes.pluck(:name).join(", ") %></span>
+				<% if p.likes.include?(current_user) %>
+					<%= link_to "Unlike", unlike_post_path(p), class: 'like' %>
+					You like this
+				<% else %>
+					<%= link_to "Like", like_post_path(p), class: 'like'%>
+				<% end %>
+
+				<%= p.likes.count %>
+				<span class="like_names">Likes this: <%= p.likes.pluck(:name).join(", ") %></span>
 			</div>
-			<p></p>
-			<p></p>
-		<% end %>
+		</div>
 	<% end %>
+
 	<script>
 		(function() {
 			$('div#new').hide()
@@ -61,9 +57,3 @@
 		})();	
 
 	</script>
-
-	<p></p>
-	<p></p>
-
-
-</body>

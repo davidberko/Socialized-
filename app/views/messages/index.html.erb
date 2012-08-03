@@ -2,12 +2,12 @@
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
-<% @messages.each do |m| %>
+<% (@messages).each do |m| %>
 <div>
   <button>view</button>
   <span>From: <%= m.user.name %><br></span>
   <p class="text"><%= m.body %></p>
-  <p></p>
+  <%= link_to "delete", user_message_path(m), :method => :delete %>
 </div>
 <% end %>
 
