@@ -6,16 +6,20 @@ body {
   
   background-color: CornflowerBlue;
   
+}
 
-}
-h3 {
-  
-}
+
 
 table {
   background-color: LightGrey;  
   text-decoration: blink;
 }
+
+table#users  {
+  text-align: right;
+  margin-right: 10cm;
+  margin-left: 10cm;
+  }
 
 #sidebar {
   border-top: 1px solid #99CC33;
