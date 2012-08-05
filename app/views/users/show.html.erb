@@ -19,22 +19,9 @@
 
 </div>
 
+
+
 <h2 class="friends">Friends</h2>
-
-<% @user ||= current_user %>
-
-<table id="users">
-  <% @user.posts.each do |post| %>
-    <tr>
-      <td class="user_posts">
-        <b>On:</b> <%= post.created_at.strftime("%d %b. %Y") %>
-        <%= post.created_at.strftime("%H:%M") %><br>
-        <b>You said:</b> "<%= post.content %>"
-      </td>
-    </tr>
-  <% end %>
-</table>
-
 
 <div class="stats">
   <a href="<%= requesting_user_path(@user) %>">
@@ -43,8 +30,6 @@
     </strong>
     requesting
   </a>
-</div>
-<div>
   <a href="<%= requesters_user_path(@user) %>">
     <strong id="requesters" class="stat">
       <%= @user.requesters.count %>
@@ -52,6 +37,9 @@
     requesters 
   </a>
 </div>
+
+<% @user ||= current_user %>
+
 <div id="sidebar">
   <b>What are <%= "#{@user.name}'s" %> . . . <br>
   <div id="favorite_movies">      
@@ -72,6 +60,22 @@
       <p class="quotes"><%= @user.quotes %></p>
     </div>
 </div>
+
+
+<table id="users">
+  <% @user.posts.each do |post| %>
+    <tr>
+      <td class="user_posts">
+        <b>On:</b> <%= post.created_at.strftime("%d %b. %Y") %>
+        <%= post.created_at.strftime("%H:%M") %><br>
+        <b>You said:</b> "<%= post.content %>"
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+
 
 <script>
   (function (){

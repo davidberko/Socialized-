@@ -9,13 +9,17 @@ div {
   border-style: solid;
   padding: 5px;
   background-color: LightGrey;
-  width: 250px;
+  width: 325px;
 }
 
 div#request-form {
 
 }
 
+div.stats {
+  height: 20px;
+  width: 325px;
+}
 
 body {
   
@@ -23,9 +27,10 @@ body {
   
 }
 
+
+
 h2.profile {
   margin-top: 2cm;
-  text-decoration:underline;
   margin-left: 1cm;
   background-color: Blue;
   color: White;
@@ -44,6 +49,23 @@ div.user-info {
 }
 
 
+#sidebar {
+  border-top: 1px solid #99CC33;
+  border-left: 1px solid #99CC33;
+  border-right: 1px solid #99CC33;
+  height: 1000px;
+  width: 200px;
+  float: left;
+  margin-right: 5px;
+  padding: 5px 0 0 5px;
+  border-color: Blue Blue;
+  width: 325px;
+}
+
+p {
+  text-indent: 50px;
+}
+
 table#users  {
   border: 1px solid;
   table-layout: fixed;
@@ -54,21 +76,4 @@ table#users  {
   background-color: LightGrey;
   border-color: Blue Blue Blue Blue;
   }
-
-#sidebar {
-  border-top: 1px solid #99CC33;
-  border-left: 1px solid #99CC33;
-  border-right: 1px solid #99CC33;
-  height: 700px;
-  width: 200px;
-  float: left;
-  margin-right: 5px;
-  padding: 5px 0 0 5px;
-  border-color: Blue Blue;
-}
-
-p {
-  text-indent: 50px;
-}
-
 

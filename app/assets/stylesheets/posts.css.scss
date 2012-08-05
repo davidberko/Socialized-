@@ -1,3 +1,29 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h2 {
+	background-color: Blue;
+	color: White;
+}
+
+div.post-content {
+  margin: 25px;
+  border-color: Blue;
+  border-width: 1px;
+  border-style: solid;
+  padding: 5px;
+  background-color: LightGrey;
+  width: 700px;
+}
+
+div.user-info {
+	width: 775px;
+	
+}
+
+div#new {
+	width: 400px;
+	margin: 25px;
+	margin-left: 75px;
+}
