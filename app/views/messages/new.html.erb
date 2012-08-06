@@ -4,7 +4,7 @@
 <%= form_for([@user, @message]) do |f| %>
 
   <%= f.text_area :body %><br />
-  <div>
+  <div class="actions">
     <%= f.submit "Send" %>
   </div>
 <% end %>
