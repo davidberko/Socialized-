@@ -46,7 +46,7 @@
   end
 
   def request!(requested)
-    relationships.create!(:requester_id => requested.id)
+    relationships.create!(:requested_id => requested.id)
   end
 
   def unrequest!(request)

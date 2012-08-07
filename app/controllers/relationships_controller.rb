@@ -3,7 +3,7 @@ class RelationshipsController < ApplicationController
   def create
     user = User.find(params[:relationship][:requested_id])
     current_user.request!(user)
-    redirect_to user
+    redirect_to current_user
     flash[:success] =  "You are now friends"
   end
 
