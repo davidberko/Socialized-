@@ -1,14 +1,14 @@
-<% @comment ||= Comment.new() %>
+<div id="comments">
+  <% @comment ||= Comment.new() %>
 
-<%= form_for @comment do |f| %>
+    <%= form_for @comment do |f| %>
 
-<%= f.hidden_field :post_id %>
-<%= f.hidden_field :user_id %>
+    <%= f.hidden_field :post_id %>
+    <%= f.hidden_field :user_id %>
 
-<%= f.label :text %>
-<%= f.text_area :text %>
+    <%= f.text_area :text %>
 
-<%= f.submit %>
+    <%= f.submit %>
 
-<% end %>
-
+  <% end %>
+</div>
