@@ -24,12 +24,21 @@
 <h2 class="friends">Friends</h2>
 
 <div class="stats">
+  <% if current_user %>
+    <a href="<%= requesting_user_path(current_user) %>">
+    <strong id="requesting" class="stat">
+      <%= @user.requesting.count %>
+    </strong>
+    Friends 
+  </a>
+  <% else %>
   <a href="<%= requesters_user_path(@user) %>">
     <strong id="requesters" class="stat">
       <%= @user.requesters.count %>
     </strong>
     Friends 
   </a>
+  <% end %>
 </div>
 
 <% @user ||= current_user %>
