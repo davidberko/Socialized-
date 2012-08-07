@@ -4,6 +4,9 @@
 	<button>Make Post</button>
 	<div id="new"><%= render 'new' %></div>
 
+
+<h2>What's happening</h2><br>
+
 	<% (@posts).each do |p| %>
 
 		<div class="user-info">
@@ -21,7 +24,7 @@
 				
 				<% if p.user_id == current_user.id %>
 					<%= link_to "Edit", edit_post_path(p) %>
-					<%= link_to "Delete", p, :method => :delete %>
+					<a class="delete"><%= link_to "Delete", p, :method => :delete %></a>
 				<% end %>
 
 				<% if p.likes.include?(current_user) %>
@@ -35,18 +38,28 @@
 				<span class="like_names">Likes this: <%= p.likes.pluck(:name).join(", ") %></span>
 			</div>
 		</div>
-		<div>
-				<%= p.comments.pluck(:text) %>
-			</div>
-
+	<div>
+		<%= p.comments.pluck(:text) %>
+	</div>
+	<button id="comment">Comment</button>
+	<div class="comments-new">
 		<%= render :template => 'comments/new.html.erb' %>
-	<% end %>
+	</div>	
+<% end %>
 
 	<script>
 		(function() {
 			$('div#new').hide()
 			$('button').click(function () {
-				$('div#new').show()
+				$('div#new').toggle()
+			})
+		})();
+
+		(function() {
+			$('a.delete').click(function(ev){
+				$('this').load('index.html.erb');
+
+				ev.preventDefault();
 			})
 		})();
 
