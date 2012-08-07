@@ -3,11 +3,11 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
-
-
+  <% unless current_user.id == @user.id %>
   <%= render 'request_form' %>
   <% unless current_user.id == @user.id %>
       <span><%= link_to "Message #{@user.name}", new_user_message_path(@user) %></span>
+  <% end %>
   <% end %>
 
   
