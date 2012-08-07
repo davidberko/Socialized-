@@ -1,3 +1,80 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div {
+  margin: 25px;
+  border-color: Blue;
+  border-width: 1px;
+  border-style: solid;
+  padding: 5px;
+  background-color: LightGrey;
+  width: 325px;
+}
+
+div#request-form {
+
+}
+
+div.stats {
+  height: 20px;
+  width: 325px;
+}
+
+body {
+  
+  background-color: White;
+  
+}
+
+
+
+h2.profile {
+  margin-top: 2cm;
+  margin-left: 1cm;
+  background-color: Blue;
+  color: White;
+}
+
+h2.friends {
+  margin-left: 1cm;
+  font-size: 20px;
+}
+
+button {
+  margin-left: 2cm;  
+}
+
+div.user-info {
+  margin-left: 2cm;
+}
+
+
+#sidebar {
+  border-top: 1px solid #99CC33;
+  border-left: 1px solid #99CC33;
+  border-right: 1px solid #99CC33;
+  height: 1000px;
+  width: 200px;
+  float: left;
+  margin-right: 5px;
+  padding: 5px 0 0 5px;
+  border-color: Blue Blue;
+  width: 325px;
+}
+
+p {
+  text-indent: 50px;
+}
+
+table#users  {
+  border: 1px solid;
+  table-layout: fixed;
+  float: right;
+  margin-right: 10cm;
+  margin-left: 10cm;
+  height: 500px;
+  background-color: LightGrey;
+  border-color: Blue Blue Blue Blue;
+  }
+

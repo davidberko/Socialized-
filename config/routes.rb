@@ -1,9 +1,5 @@
 Fbclone2::Application.routes.draw do
 
-  get "relationships/create"
-
-  get "relationships/destroy"
-
 	resources :sessions, only: [:new, :create, :destroy]
 	resources :relationships, only: [:create, :destroy]
 	  
@@ -12,15 +8,23 @@ Fbclone2::Application.routes.draw do
 	match "sign_up", to: "users#new", :as => "sign_up"
 	
 	resources :users do
+    resources :messages
 		resources :posts, only: [:show, :index]
-		member do
+  	member do
 			get :requesting, :requesters
+		end
 	end
-end
+
 	
 	resources :posts 
-
 	resources :user
+  resources :comments
+
+
+	resources :posts do
+		get :like, on: :member
+		get :unlike, on: :member
+	end
 
 	root :to => "sessions#new"
 

@@ -1,29 +1,35 @@
 
-<h2>Profile</h2>
-<%= render 'request_form' %>
-<p></p>
-<p></p>
+  <h2 class="profile">FacebookClone</h2>
 
-<div><b><%= @user.name %></b></div><br>
-
-<div><%= image_tag @user.image_url %></div><br>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 
 
-<%= link_to "View all posts", posts_path %>
+  <%= render 'request_form' %>
+  <% unless current_user.id == @user.id %>
+      <span><%= link_to "Message #{@user.name}", new_user_message_path(@user) %></span>
+  <% end %>
 
-<h3>Friends</h3>
   
-  <% @user ||= current_user %>
-  <div class="stats">
+<div> 
+  <span><%= image_tag @user.image_url %></span>
+  <spam><b><%= @user.name %></b></span>
+
+  <span><%= link_to "View all posts", posts_path %></span>
+
+</div>
+
+
+
+<h2 class="friends">Friends</h2>
+
+<div class="stats">
   <a href="<%= requesting_user_path(@user) %>">
     <strong id="requesting" class="stat">
       <%= @user.requesting.count %>
     </strong>
     requesting
   </a>
-</div>
-  <div>
   <a href="<%= requesters_user_path(@user) %>">
     <strong id="requesters" class="stat">
       <%= @user.requesters.count %>
@@ -31,4 +37,75 @@
     requesters 
   </a>
 </div>
+
+<% @user ||= current_user %>
+
+<div id="sidebar">
+  <b>What are <%= "#{@user.name}'s" %> . . . <br>
+  <div id="favorite_movies">      
+    <span>Favorite Movies?</b></span><br>
+    <div>  
+      <p class="movies"><%= @user.favorite_movie %></p>
+    </div>
+  </div>
+  <div id="pets">
+    <b>Pets</b>
+    <div>
+      <p class="pets"><%= @user.pets %></p>
+    </div>
+  </div>
+  <div id="quotes">
+    <b>Best Quotes</b>
+    <div>
+      <p class="quotes"><%= @user.quotes %></p>
+    </div>
+</div>
+
+
+<table id="users">
+  <% @user.posts.each do |post| %>
+    <tr>
+      <td class="user_posts">
+        <b>On:</b> <%= post.created_at.strftime("%d %b. %Y") %>
+        <%= post.created_at.strftime("%H:%M") %><br>
+        <b>You said:</b> "<%= post.content %>"
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+
+
+<script>
+  (function (){
+
+    $('p.movies').hide()
+    $('div#favorite_movies').hover(function() {
+
+    $('p.movies').toggle().css(
+    {'font-size': '25px',
+      'color': 'White'
+      }
+      )
+        });
+    $('p.pets').hide()
+    $('div#pets').hover(function() {
+      $('p.pets').toggle().css(
+        {'font-size':'25px', 
+         'color': 'White'
+        }
+      )
+    });
+    $('p.quotes').hide()
+    $('div#quotes').hover(function() {
+      $('p.quotes').toggle().css(
+        {'font-size': '25px',
+          'color': 'White'
+        }
+      )
+    });
+  })();
+</script>
+
 

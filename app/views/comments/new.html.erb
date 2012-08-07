@@ -1,0 +1,14 @@
+<div id="comments">
+  <% @comment ||= Comment.new() %>
+
+    <%= form_for @comment do |f| %>
+
+    <%= f.hidden_field :post_id %>
+    <%= f.hidden_field :user_id %>
+
+    <%= f.text_area :text %>
+
+    <%= f.submit %>
+
+  <% end %>
+</div>

@@ -1,0 +1,22 @@
+<h3>Inbox</h3>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<% (@messages).each do |m| %>
+<div>
+  <button>view</button>
+  <span>From: <%= m.user.name %><br></span>
+  <p class="text"><%= m.body %></p>
+</div>
+<% end %>
+
+<script>
+            (function () {
+
+            $('p.text').hide();
+            $('button').click(function(e) {
+            $(e.target).siblings('p.text').toggle();
+                                          });
+            })();
+</script>
+

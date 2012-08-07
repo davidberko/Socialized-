@@ -1,13 +1,15 @@
   class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation, :image, :name
+  attr_accessible :email, :password, :password_confirmation, :image, :name, :favorite_movie, :pets, :quotes
   has_many :posts
+  has_many :messages
+  has_many :comments
   mount_uploader :image, ImageUploader
   has_many :relationships, :dependent => :destroy,
                            :foreign_key => "requester_id"
   has_many :reverse_relationships, :dependent => :destroy,
                                    :foreign_key => "requested_id",
                                    :class_name => "Relationship" 
-
+   has_and_belongs_to_many :likes, join_table: :posts_users, association_foreign_key: :post_id, class_name: Post
 
   has_many :requesting, :through => :relationships, :source => :requested                            
   has_many :requesters, :through => :reverse_relationships,
@@ -33,6 +35,10 @@
 
   def current_user?
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+   def signed_in?
+    !@current_user.nil?
   end
 
   def requesting?(requested)

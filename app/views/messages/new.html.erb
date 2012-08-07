@@ -1,0 +1,12 @@
+
+<h4>New Message</h4>
+
+<%= form_for([@user, @message]) do |f| %>
+
+  <%= f.text_area :body %><br />
+  <div class="actions">
+    <%= f.submit "Send" %>
+  </div>
+<% end %>
+
+

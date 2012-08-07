@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   
 
   def index
-     @posts = Post.all
+     @posts = Post.order('created_at DESC')
   end
 
   def new
@@ -38,6 +38,20 @@ class PostsController < ApplicationController
     if @post.delete
       redirect_to posts_path
   end
+ end
+
+ def like
+   post = Post.find(params[:id])
+   post.likes << current_user unless post.likes.include?(current_user)
+   redirect_to posts_path
+ end 
+
+ def unlike
+    post = Post.find(params[:id])
+    if post.likes.include?(current_user)
+      post.likes.delete(current_user)
+    end
+    redirect_to posts_path
  end
 end
 
