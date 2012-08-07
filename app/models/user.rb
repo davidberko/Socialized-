@@ -2,6 +2,7 @@
   attr_accessible :email, :password, :password_confirmation, :image, :name, :favorite_movie, :pets, :quotes
   has_many :posts
   has_many :messages
+  has_many :comments
   mount_uploader :image, ImageUploader
   has_many :relationships, :dependent => :destroy,
                            :foreign_key => "requester_id"

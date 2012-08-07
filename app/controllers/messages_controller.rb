@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
 
   def new
      @user = User.find(params[:user_id])
-     @message = Message.new(user_id: current_user.id)
+     @message = Message.new(sender_id: current_user.id)
   end
 
   def create

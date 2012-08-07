@@ -10,7 +10,7 @@ Fbclone2::Application.routes.draw do
 	resources :users do
     resources :messages
 		resources :posts, only: [:show, :index]
-		member do
+  	member do
 			get :requesting, :requesters
 		end
 	end
@@ -18,6 +18,7 @@ Fbclone2::Application.routes.draw do
 	
 	resources :posts 
 	resources :user
+  resources :comments
 
 
 	resources :posts do
