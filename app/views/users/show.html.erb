@@ -83,15 +83,27 @@
     $('p.movies').hide()
     $('div#favorite_movies').hover(function() {
 
-    $('p.movies').toggle()
+    $('p.movies').toggle().css(
+    {'font-size': '25px',
+      'color': 'White'
+      }
+      )
         });
     $('p.pets').hide()
     $('div#pets').hover(function() {
-      $('p.pets').toggle()
+      $('p.pets').toggle().css(
+        {'font-size':'25px', 
+         'color': 'White'
+        }
+      )
     });
     $('p.quotes').hide()
     $('div#quotes').hover(function() {
-      $('p.quotes').toggle()
+      $('p.quotes').toggle().css(
+        {'font-size': '25px',
+          'color': 'White'
+        }
+      )
     });
   })();
 </script>
