@@ -24,16 +24,16 @@
 <h2 class="friends">Friends</h2>
 
 <div class="stats">
-  <% if current_user %>
+    <% if current_user.id == @user.id %>
     <a href="<%= requesting_user_path(current_user) %>">
-    <strong id="requesting" class="stat">
+    <strong id="requesters" class="stat">
       <%= @user.requesting.count %>
     </strong>
     Friends 
   </a>
-  <% else %>
-  <a href="<%= requesters_user_path(@user) %>">
-    <strong id="requesters" class="stat">
+    <% else %>
+    <a href="<%= requesters_user_path(@user) %>">
+    <strong id="requesting" class="stat">
       <%= @user.requesters.count %>
     </strong>
     Friends 
