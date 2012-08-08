@@ -49,6 +49,22 @@ div.user-info {
   margin-left: 2cm;
 }
 
+td {
+  border: 1px solid;
+  table-layout: fixed;
+  float: right;
+  margin-right: 10cm;
+  margin-left: 10cm;
+  height: 100px;
+  width: 500px;
+  background-color: LightGrey;
+  border-color: Blue Blue Blue Blue;
+  }
+
+  div.user-activity {
+    float: left;
+    width: 1300px;
+  }
 
 #sidebar {
   border-top: 1px solid #99CC33;
@@ -63,20 +79,13 @@ div.user-info {
   width: 325px;
 }
 
+div#profile {
+  width: 1300px;
+}
+
 p {
   text-indent: 50px;
 }
-
-table#users  {
-  border: 1px solid;
-  table-layout: fixed;
-  float: right;
-  margin-right: 10cm;
-  margin-left: 10cm;
-  height: 500px;
-  background-color: LightGrey;
-  border-color: Blue Blue Blue Blue;
-  }
 
   table.requesting {
     background-color: LightGrey;
