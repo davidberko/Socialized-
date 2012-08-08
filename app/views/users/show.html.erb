@@ -15,7 +15,7 @@
   <span><%= image_tag @user.image_url %></span>
   <spam><b><%= @user.name %></b></span>
 
-  <span><%= link_to "View all posts", posts_path %></span>
+  <span><%= link_to "Status Feed", posts_path %></span>
 
 </div>
 
@@ -41,44 +41,47 @@
   <% end %>
 </div>
 
-<% @user ||= current_user %>
+<div class="user-activity">
 
-<div id="sidebar">
-  <b>What are <%= "#{@user.name}'s" %> . . . <br>
-  <div id="favorite_movies">      
-    <span>Favorite Movies?</b></span><br>
-    <div>  
-      <p class="movies"><%= @user.favorite_movie %></p>
-    </div>
-  </div>
-  <div id="pets">
-    <b>Pets</b>
-    <div>
-      <p class="pets"><%= @user.pets %></p>
-    </div>
-  </div>
-  <div id="quotes">
-    <b>Best Quotes</b>
-    <div>
-      <p class="quotes"><%= @user.quotes %></p>
+
+  <h2>Recent Activity</h2>
+
+  <table id="users">
+        <% @user.posts.each do |post| %>
+        <tr>
+          <td>
+            <b>On:</b> <%= post.created_at.strftime("%d %b. %Y") %>
+            <%= post.created_at.strftime("%H:%M") %><br>
+            <b>You said:</b> "<%= post.content %>"<br>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+
+    <% @user ||= current_user %>
+
+      <div id="sidebar">
+        <b>What are <%= "#{@user.name}'s" %> . . . <br>
+        <div id="favorite_movies">      
+          <span>Favorite Movies?</b></span><br>
+          <div>  
+            <p class="movies"><%= @user.favorite_movie %></p>
+          </div>
+        </div>
+        <div id="pets">
+          <b>Pets</b>
+          <div>
+            <p class="pets"><%= @user.pets %></p>
+          </div>
+        </div>
+        <div id="quotes">
+          <b>Best Quotes</b>
+          <div>
+            <p class="quotes"><%= @user.quotes %></p>
+          </div>
+      </div>
     </div>
 </div>
-
-
-<table id="users">
-  <% @user.posts.each do |post| %>
-    <tr>
-      <td class="user_posts">
-        <b>On:</b> <%= post.created_at.strftime("%d %b. %Y") %>
-        <%= post.created_at.strftime("%H:%M") %><br>
-        <b>You said:</b> "<%= post.content %>"
-      </td>
-    </tr>
-  <% end %>
-</table>
-
-
-
 
 <script>
   (function (){
