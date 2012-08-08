@@ -1,7 +1,7 @@
   class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :image, :name, :favorite_movie, :pets, :quotes
   has_many :posts
-  has_many :messages
+  has_many :messages,foreign_key: :sender_id
   has_many :comments
   mount_uploader :image, ImageUploader
   has_many :relationships, :dependent => :destroy,

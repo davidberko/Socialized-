@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @messages = @user.messages
-    flash[:success] = "Welcome to the inbox!"
+        flash[:success] = "Welcome to the inbox!"
   end
 
   def new
@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @message = Message.create(params[:message].merge({user_id: @user.id, sender_id: current_user.id}))
+    @message = Message.create(params[:message].merge({user_id: current_user.id, sender_id: @user.id}))
     if current_user
       redirect_to user_path(current_user)
     else
