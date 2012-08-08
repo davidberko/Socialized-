@@ -1,15 +1,9 @@
-
-<table class="requesting">
-  <tr>
-    <td>
-      <div class="title">
-        <h1>Friends</h1>
-      </div>
-      <% if current_user.requesting?(@users) %>
-      <ul>
-        <%= render :template => 'users/index' %>
-      </ul>
-      <% end %>
-    </td>
-  </tr>
-</table>
+    
+            <div class="title">
+              <h1>Friends</h1>
+              <% if current_user.requesting?(@users) %>
+              <ul>
+                <%= render :template => 'users/index' %>
+              </ul>
+              <% end %>
+            </div>
