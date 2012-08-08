@@ -1,1 +1,13 @@
-<%= @user.requesters.pluck(:name) %>
+<table>
+  <tr>
+    <td>
+      <h1>Friends</h1>
+
+      <% if current_user.requesting?(@user) %>
+      <ul>
+        <%= render :template => 'users/index' %>
+      </ul>
+      <% end %>
+    </td>
+  </tr>
+</table>

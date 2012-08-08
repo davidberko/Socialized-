@@ -8,6 +8,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id], params[:relationship])
   end
 
+  def requesting
+    @user = User.find(params[:id])
+    @users = @user.requesting
+    render 'show_requesting'
+  end
+
+  def requesters
+    @user = User.find(params[:id])
+    @users = @user.requesters
+    render 'show_requesters'
+  end
+
   def new
     @user = User.new(params[:user])
   end
