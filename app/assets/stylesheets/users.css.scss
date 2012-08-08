@@ -78,3 +78,19 @@ table#users  {
   border-color: Blue Blue Blue Blue;
   }
 
+  table.requesting {
+    background-color: LightGrey;
+  }
+
+  table.requesters {
+    background-color: LightGrey;
+  }
+
+  div.title {
+    height: 40px;
+    width: 325px;
+    font-size: 10px;
+    background-color: Blue;
+    color: White;
+  }
+

@@ -1,9 +1,10 @@
 
-<table>
+<table class="requesting">
   <tr>
     <td>
-      <h1>Friends</h1>
-
+      <div class="title">
+        <h1>Friends</h1>
+      </div>
       <% if current_user.requesting?(@users) %>
       <ul>
         <%= render :template => 'users/index' %>
