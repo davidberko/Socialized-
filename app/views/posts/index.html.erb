@@ -37,7 +37,18 @@
 				<%= p.likes.count %>
 				<span class="like_names">Likes this: <%= p.likes.pluck(:name).join(", ") %></span>
 			</div>
+			<div>
+				<% p.comments.each do |comment| %>
+					<%= comment.body %><br>
+					<% end %>	
+			</div>
 		</div>
+		<%= form_for p.comments.build do |f| %>
+			<%= f.hidden_field :user_id %>
+			<%= f.hidden_field :post_id %>
+			<%= f.text_field :body %>
+			<%= f.submit "comment" %>
+		<% end %>
 <% end %>
 
 	<script>
