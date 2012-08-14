@@ -38,13 +38,6 @@
 				<span class="like_names">Likes this: <%= p.likes.pluck(:name).join(", ") %></span>
 			</div>
 		</div>
-	<div>
-		<%= p.comments.pluck(:text) %>
-	</div>
-	<button id="comment">Comment</button>
-	<div class="comments-new">
-		<%= render :template => 'comments/new.html.erb' %>
-	</div>	
 <% end %>
 
 	<script>
