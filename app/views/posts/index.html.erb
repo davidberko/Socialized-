@@ -37,6 +37,7 @@
 				<%= p.likes.count %>
 				<span class="like_names">Likes this: <%= p.likes.pluck(:name).join(", ") %></span>
 			</div>
+					<h3>Comments</h3>
 			<div>
 				<% p.comments.each do |comment| %>
 					<%= comment.body %><br>
