@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @user = current_user
    @comment = Comment.create(params[:comment])
    redirect_to posts_path
   end

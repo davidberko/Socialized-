@@ -37,13 +37,14 @@
 				<%= p.likes.count %>
 				<span class="like_names">Likes this: <%= p.likes.pluck(:name).join(", ") %></span>
 			</div>
-					<h3>Comments</h3>
-			<div>
+			<div class="comments-count"><%= p.comments.count %> Comments</div>
+		</div>
+				<h3>Comments</h3>
+			<div class="comments">
 				<% p.comments.each do |comment| %>
-					<%= comment.body %><br>
+				 <div class="each-comment"><%= comment.body %><br></div>
 					<% end %>	
 			</div>
-		</div>
 		<%= form_for p.comments.build do |f| %>
 			<%= f.hidden_field :user_id %>
 			<%= f.hidden_field :post_id %>
